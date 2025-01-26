@@ -36,7 +36,6 @@ public class Bootstrap : MonoBehaviour
                 List<Transform> attachedKnots = new();
                 attachedKnots.Add(knot);
                 attachedKnots.Add(connectedKnot);
-                Debug.Log(connectedKnot.name + " - " + knot.name);
                 currentRope.GetComponent<Rope>().SetAttachedKnots(attachedKnots);
                 currentRope.position = (connectedKnot.position - knot.position) / 2 + knot.position + Vector3.forward / 10;
                 currentRope.rotation = Quaternion.LookRotation(Vector3.forward, connectedKnot.position - knot.position);
