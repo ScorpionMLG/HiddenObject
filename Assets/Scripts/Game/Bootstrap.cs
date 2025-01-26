@@ -12,7 +12,7 @@ public class Bootstrap : MonoBehaviour
     private const int ROPES_COUNT = 20;
     private const int DEG_IN_CIRCLE = 360;
     private const float NORMALIZE_SIZE = 0.055f;
-    void Awake()
+    void Start()
     {
         StartCoroutine(WaitRopesInitialization());
         _ropes = new Transform[ROPES_COUNT];
@@ -36,6 +36,7 @@ public class Bootstrap : MonoBehaviour
                 List<Transform> attachedKnots = new();
                 attachedKnots.Add(knot);
                 attachedKnots.Add(connectedKnot);
+                Debug.Log(connectedKnot.name + " - " + knot.name);
                 currentRope.GetComponent<Rope>().SetAttachedKnots(attachedKnots);
                 currentRope.position = (connectedKnot.position - knot.position) / 2 + knot.position + Vector3.forward / 10;
                 currentRope.rotation = Quaternion.LookRotation(Vector3.forward, connectedKnot.position - knot.position);
